@@ -29,7 +29,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/saneeshcs/Tippy/blob/master/Basic.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [LiceCap](https://github.com/saneeshcs/Tippy/blob/master/Settings-Screen.gif).
 
 ## Notes
 
