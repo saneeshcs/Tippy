@@ -20,6 +20,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let savedIndex = defaults.integer(forKey: "selectedTipPercentage")
+        let savedBillAmount = defaults.integer(forKey: "bill_amount")
+        let savedTime = defaults.integer(forKey: "savedTime")
+        
+        if(currentTimeInMilliSeconds() - savedTime > 60*1000){
+            saveBillInfo(amount: 0)
+        }  else {
+            billAmountTextField.text = String(savedBillAmount)
+        }
         tipSegment.selectedSegmentIndex = savedIndex
     }
 
@@ -34,6 +42,21 @@ class ViewController: UIViewController {
     
         tipLabel.text = String(format: "$%.2f", tipAmount)
         totalLabel.text = String(format: "$%.2f", totalAmount)
+        
+        saveBillInfo(amount: billAmount)
+    }
+    
+    func saveBillInfo(amount: Double){
+        defaults.set(amount, forKey: "bill_amount")
+        defaults.set(currentTimeInMilliSeconds(), forKey: "savedTime")
+        defaults.synchronize()
+    }
+    
+    func currentTimeInMilliSeconds()-> Int
+    {
+        let currentDate = Date()
+        let since1970 = currentDate.timeIntervalSince1970
+        return Int(since1970 * 1000)
     }
 }
 
