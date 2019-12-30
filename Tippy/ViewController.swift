@@ -15,10 +15,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipSegment: UISegmentedControl!
     let tipPercentages  = [0.15, 0.18, 0.2]
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let savedIndex = defaults.integer(forKey: "selectedTipPercentage")
+        tipSegment.selectedSegmentIndex = savedIndex
     }
 
     @IBAction func onTap(_ sender: UITapGestureRecognizer) {
